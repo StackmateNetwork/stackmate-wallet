@@ -1,0 +1,93 @@
+name: stackmate_wallet
+description: Privacy focused Bitcoin Wallet.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  libstackmate:
+    path: packages/libstackmate
+  bip39: ^1.0.6
+  flutter_bloc: ^8.0.1
+  file_picker: ^5.2.11
+  flutter_barcode_scanner: ^2.0.0
+  cupertino_icons: ^1.0.2
+  go_router: ^7.0.0
+  flutter_secure_storage: ^8.0.0
+  hive: ^2.1.0
+  hive_flutter: ^1.1.0
+  freezed_annotation: ^2.0.3
+  #json_annotation: ^4.8.1
+  intl: ^0.18.0
+  numeric_keyboard: ^1.1.0
+  utopic_tor_onion_proxy: ^0.4.0
+  oktoast: ^3.1.5
+  url_launcher: ^6.0.3
+  get_it: ^7.2.0
+  share: ^2.0.4
+  sqflite: ^2.2.8
+  top_snackbar_flutter: ^3.0.0+1
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^6.1.5
+  build_runner: ^2.0.5
+  freezed: ^2.0.3+1
+  hive_generator: ^2.0.1
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/icon/sm92.png
+    - assets/icon/bitcoin_icons/png/outline/node.png
+    - assets/icon/bitcoin_icons/png/outline/home.png
+    - assets/icon/bitcoin_icons/png/outline/ellipsis.png
+    - assets/icon/bitcoin_icons/png/outline/satoshi-v2.png
+    - assets/icon/bitcoin_icons/png/outline/proxy.png
+    - assets/icon/bitcoin_icons/png/outline/link.png
+    - assets/bip39_english.txt
+  fonts:
+    - family: NF3270
+      fonts:
+        - asset: assets/3270-Medium.otf
+        - asset: assets/3270-Narrow.otf
+    - family: Hurmit
+      fonts:
+        - asset: assets/Hurmit-Light.otf
+        - asset: assets/Hurmit-Medium.otf
+        - asset: assets/Hurmit-Bold.otf
+    - family: Aldrich
+      fonts:
+        - asset: assets/Aldrich/Aldrich-Regular.ttf
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/sm92.png"
