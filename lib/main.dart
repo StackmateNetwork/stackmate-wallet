@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:stackmate_wallet/app/add_wallet/pages/add_wallet_page.dart';
 import 'package:stackmate_wallet/app/common/components/cubits.dart';
 // import 'package:stackmate_wallet/cubit/wallet/info.dart';
 // import 'package:stackmate_wallet/model/wallet.dart';
@@ -31,7 +32,7 @@ import 'package:stackmate_wallet/pkg/storage.dart';
 import 'package:stackmate_wallet/app/common/components/style.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'app/landing/page/landing_page.dart';
+import 'app/landing/pages/landing_page.dart';
 
 void main() async {
   await initializeHive();
@@ -83,7 +84,7 @@ class Stackmate extends StatelessWidget {
     routes: [
       GoRoute(
         path: '/',
-        builder: (_, __) => const LandingScreen(),
+        builder: (_, __) => const LandingPage(),
       ),
       // GoRoute(
       //   path: '/home',
@@ -93,10 +94,10 @@ class Stackmate extends StatelessWidget {
       //   path: '/settings',
       //   builder: (_, __) => const SettingsScreen(),
       // ),
-      // GoRoute(
-      //   path: '/add-wallet',
-      //   builder: (_, __) => const AddWalletScreen(),
-      // ),
+      GoRoute(
+        path: '/add-wallet',
+        builder: (_, __) => const AddWalletPage(),
+      ),
       // GoRoute(
       //   path: '/broadcast',
       //   builder: (_, __) => const BroadcastScreen(),
