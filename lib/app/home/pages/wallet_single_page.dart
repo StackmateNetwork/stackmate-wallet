@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stackmate_wallet/app/common/components/error_handler.dart';
+import 'package:stackmate_wallet/app/common/components/success_handler.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/balance.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/loader.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/tx_list.dart';
+import 'package:stackmate_wallet/app/common/consts.dart';
 import 'package:stackmate_wallet/app/common/cubits/fees_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/tor_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallet/wallet_info_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/wallets_cubit.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/Balance.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/Info.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/Loader.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/TransactionList.dart';
-import 'package:stackmate_wallet/ui/component/common/ErrorHandler.dart';
-import 'package:stackmate_wallet/ui/component/common/SuccessHandler.dart';
+
 
 class _Wallet extends StatelessWidget {
   const _Wallet();

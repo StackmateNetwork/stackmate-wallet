@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stackmate_wallet/app/common/components/bitcoin_display_small.dart';
 import 'package:stackmate_wallet/app/common/cubits/preferences_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallet/wallet_info_cubit.dart';
 import 'package:stackmate_wallet/app/common/models/wallet_model.dart';
+import 'package:stackmate_wallet/app/home/pages/wallet_single_page.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';
-import 'package:stackmate_wallet/ui/screen/WalletSingle.dart';
+
 
 class WalletCard extends StatelessWidget {
   const WalletCard({

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stackmate_wallet/app/common/consts.dart';
 import 'package:stackmate_wallet/app/landing/models/pin_model.dart';
-import 'package:stackmate_wallet/app/common/cubits/new_wallet/common/xpub_import_cubit.dart';
 import 'package:stackmate_wallet/pkg/interface/storage.dart';
 import 'package:stackmate_wallet/pkg/storage.dart';
 

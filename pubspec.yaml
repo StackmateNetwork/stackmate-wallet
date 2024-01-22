@@ -51,9 +51,6 @@ dependencies:
   animate_do: ^3.1.2
   permission_handler: ^10.0.0
 
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,7 +63,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: true
+  #generate: true
   assets:
     - assets/icon/sm92.png
     - assets/icon/bitcoin_icons/png/outline/node.png

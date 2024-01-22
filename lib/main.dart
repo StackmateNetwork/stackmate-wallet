@@ -8,6 +8,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:stackmate_wallet/app/add_wallet/add_wallet_page.dart';
 import 'package:stackmate_wallet/app/common/components/cubits.dart';
 import 'package:stackmate_wallet/app/home/home_page.dart';
+import 'package:stackmate_wallet/app/new_wallet/pages/seed_generate_page.dart';
 // import 'package:stackmate_wallet/cubit/wallet/info.dart';
 // import 'package:stackmate_wallet/model/wallet.dart';
 import 'package:stackmate_wallet/pkg/_locator.dart';
@@ -99,6 +100,14 @@ class Stackmate extends StatelessWidget {
         path: '/add-wallet',
         builder: (_, __) => const AddWalletPage(),
       ),
+      GoRoute(
+        path: '/generate-seed',
+        builder: (_, __) => const SeedGeneratePage(),
+      ),
+      // GoRoute(cl
+      //   path: '/import-seed',
+      //   builder: (_, __) => const SeedImportScreen(),
+      // ),
       // GoRoute(
       //   path: '/broadcast',
       //   builder: (_, __) => const BroadcastScreen(),
@@ -110,14 +119,6 @@ class Stackmate extends StatelessWidget {
       // GoRoute(
       //   path: '/tor-config',
       //   builder: (_, __) => const TorConfigScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/generate-seed',
-      //   builder: (_, __) => const SeedGenerateScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/import-seed',
-      //   builder: (_, __) => const SeedImportScreen(),
       // ),
       // GoRoute(
       //   path: '/derive-account',

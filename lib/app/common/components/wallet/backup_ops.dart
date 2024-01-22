@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stackmate_wallet/app/common/cubits/master_key_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallet/wallet_info_cubit.dart';
 import 'package:stackmate_wallet/app/common/models/master_key_model.dart';
 import 'package:stackmate_wallet/app/common/models/wallet_model.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';

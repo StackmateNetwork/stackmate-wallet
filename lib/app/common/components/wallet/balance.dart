@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:stackmate_wallet/app/common/components/bitcoin_display_large.dart';
 import 'package:stackmate_wallet/app/common/cubits/preferences_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallet/wallet_info_cubit.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';
 
 

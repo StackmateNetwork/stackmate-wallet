@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/backup_ops.dart';
+import 'package:stackmate_wallet/app/common/components/wallet/key_info.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/BackupOps.dart';
-import 'package:stackmate_wallet/ui/component/Wallet/KeyInfo.dart';
+
 
 class WalletInfo extends StatelessWidget {
   const WalletInfo({super.key});

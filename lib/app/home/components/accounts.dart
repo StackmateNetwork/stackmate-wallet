@@ -3,7 +3,7 @@ import 'package:stackmate_wallet/app/common/cubits/chain_select_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/logger_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/node_address_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/tor_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/wallet/info.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallet/wallet_info_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/wallets_cubit.dart';
 import 'package:stackmate_wallet/pkg/_locator.dart';
 import 'package:stackmate_wallet/pkg/extensions.dart';

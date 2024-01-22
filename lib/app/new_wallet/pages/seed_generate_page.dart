@@ -1,0 +1,198 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stackmate_wallet/api/interface/libbitcoin.dart';
+import 'package:stackmate_wallet/app/common/cubits/chain_select_cubit.dart';
+import 'package:stackmate_wallet/app/common/cubits/logger_cubit.dart';
+import 'package:stackmate_wallet/app/common/cubits/master_key_cubit.dart';
+import 'package:stackmate_wallet/app/new_wallet/components/seed_generate.dart';
+import 'package:stackmate_wallet/app/new_wallet/components/seed_generate/label.dart';
+import 'package:stackmate_wallet/app/new_wallet/components/seed_generate/stepper.dart';
+import 'package:stackmate_wallet/app/new_wallet/components/seed_generate/warning.dart';
+import 'package:stackmate_wallet/app/new_wallet/cubits/common/seed_generate_cubit.dart';
+import 'package:stackmate_wallet/app/new_wallet/cubits/seed_generate_wallet_cubit.dart';
+import 'package:stackmate_wallet/app/common/cubits/tor_cubit.dart';
+import 'package:stackmate_wallet/app/common/cubits/wallets_cubit.dart';
+import 'package:stackmate_wallet/pkg/_locator.dart';
+import 'package:stackmate_wallet/pkg/extensions.dart';
+import 'package:stackmate_wallet/pkg/interface/launcher.dart';
+import 'package:stackmate_wallet/pkg/interface/storage.dart';
+
+
+class _SeedGenerate extends StatefulWidget {
+  @override
+  _SeedGenerateState createState() => _SeedGenerateState();
+}
+
+class _SeedGenerateState extends State<_SeedGenerate> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext c) {
+    final tor = c.select((TorCubit t) => t.state);
+    return BlocConsumer<SeedGenerateWalletCubit, SeedGenerateWalletState>(
+      listenWhen: (previous, current) =>
+          previous.currentStep != current.currentStep ||
+          previous.newWalletSaved != current.newWalletSaved,
+      listener: (context, state) {
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.bounceIn,
+        );
+
+        if (state.newWalletSaved) {
+          context.pop();
+          context.push('/home');
+        }
+      },
+      buildWhen: (previous, current) =>
+          previous.currentStep != current.currentStep,
+      builder: (context, state) {
+        return PopScope(
+          onPopInvoked: (_) async {
+            if (!state.canGoBack()) {
+              c.read<SeedGenerateWalletCubit>().backClicked();
+              return;
+            }
+            return;
+          },
+          child: Scaffold(
+            appBar: AppBar(
+              actions: [
+                if (tor.isConnected) ...[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Tooltip(
+                      preferBelow: false,
+                      triggerMode: TooltipTriggerMode.tap,
+                      message: (tor.isRunning)
+                          ? 'Torified Natively.'
+                          : 'Torified via External.',
+                      textStyle: c.fonts.bodySmall!.copyWith(
+                        color: c.colours.primary,
+                      ),
+                      decoration: BoxDecoration(
+                        color: c.colours.surface,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Icon(
+                        Icons.security_sharp,
+                        color: c.colours.tertiaryContainer,
+                      ),
+                    ),
+                  ),
+                ] else ...[
+                  IconButton(
+                    color: c.colours.error,
+                    onPressed: () {
+                      c.push('/tor-config');
+                    },
+                    icon: Icon(
+                      Icons.security_sharp,
+                      color: c.colours.error,
+                    ),
+                  ),
+                ],
+              ],
+              title: const Text('Keygen'),
+              leading: Builder(
+                builder: (BuildContext context) {
+                  return BackButton(
+                    onPressed: () {
+                      if (!state.canGoBack()) {
+                        c.read<SeedGenerateWalletCubit>().backClicked();
+                        return;
+                      }
+                      context.pop();
+                    },
+                  );
+                },
+              ),
+            ),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: GenerateWalletStepper(),
+                    ),
+                    FadeInLeft(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 24,
+                        ),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: c.colours.surface,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: () {
+                          switch (state.currentStep) {
+                            case SeedGenerateWalletSteps.warning:
+                              return SeedGenerateWarning();
+                            case SeedGenerateWalletSteps.generate:
+                              return const SeedGenerateStepSelect();
+                            case SeedGenerateWalletSteps.label:
+                              return const SeedGenerateLabel();
+                          }
+                        }(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class SeedGeneratePage extends StatelessWidget {
+  const SeedGeneratePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final networkSelect = context.select((ChainSelectCubit c) => c);
+    final logger = context.select((Logger c) => c);
+    final wallets = context.select((WalletsCubit c) => c);
+    final masterKey = context.select((MasterKeyCubit c) => c);
+
+    final seedGenerateCubit = SeedGenerateCubit(
+      locator<IStackMateBitcoin>(),
+      masterKey,
+      networkSelect,
+      logger,
+      locator<ILauncher>(),
+    );
+
+    final seedGenerateWalletCubit = SeedGenerateWalletCubit(
+      locator<IStackMateBitcoin>(),
+      locator<IStorage>(),
+      logger,
+      wallets,
+      networkSelect,
+      seedGenerateCubit,
+    );
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: seedGenerateCubit),
+        BlocProvider.value(value: seedGenerateWalletCubit),
+      ],
+      child: _SeedGenerate(),
+    );
+  }
+}

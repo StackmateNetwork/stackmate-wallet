@@ -1,6 +1,6 @@
 // import 'dart:convert';
 // import 'package:dio/dio.dart';
-// import 'package:stackmate_wallet/cubit/logger.dart';
+// import 'package:stackmate_wallet/app/common/cubits/logger_cubit.dart';
 // import 'package:stackmate_wallet/pkg/_locator.dart';
 
 // final client = Dio(BaseOptions(validateStatus: (status) => true));

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stackmate_wallet/api/interface/libbitcoin.dart';
+import 'package:stackmate_wallet/app/common/components/words_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/broadcast_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/chain_select_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/fees_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/logger_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/master_key_cubit.dart';
-import 'package:stackmate_wallet/app/common/cubits/new_wallet/common/words_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/node_address_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/preferences_cubit.dart';
 import 'package:stackmate_wallet/app/common/cubits/tor_cubit.dart';
