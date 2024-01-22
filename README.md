@@ -1,16 +1,26 @@
 # stackmate_wallet
 
-A new Flutter project.
+Refactor of the_stackmate with a new modular project dir structure
 
-## Getting Started
+# Working Docs:
+Trying to classify the common modules from the specific ones:
+## Cubits appearing more than once across files:
+tor_cubit
+master_key_cubit
+fees_cubit
+chain_select_cubit
+logger_cubit
+node_address_cubit
+wallets_cubit
 
-This project is a starting point for a Flutter application.
+## Models appearing more than once across files:
+transaction_model
+result_model
+blockchain_model
+wallets_model
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Restructuring:
+/app/common/cubits/new_wallet:
+Child cubits can be taken out of dir common and moved into new dirs alongside/nested with their parent (wallet) cubits 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

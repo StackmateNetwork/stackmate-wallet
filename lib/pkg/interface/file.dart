@@ -1,4 +1,4 @@
-// import 'package:sats/model/result.dart';
+// import 'package:stackmate_wallet/model/result.dart';
 
 // abstract class IFileManager {
 //   Future<R<bool>> saveTextToFile(

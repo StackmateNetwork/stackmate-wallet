@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:stackmate_wallet/app/add_wallet/pages/add_wallet_page.dart';
+import 'package:stackmate_wallet/app/add_wallet/add_wallet_page.dart';
 import 'package:stackmate_wallet/app/common/components/cubits.dart';
+import 'package:stackmate_wallet/app/home/home_page.dart';
 // import 'package:stackmate_wallet/cubit/wallet/info.dart';
 // import 'package:stackmate_wallet/model/wallet.dart';
 import 'package:stackmate_wallet/pkg/_locator.dart';
@@ -32,7 +33,7 @@ import 'package:stackmate_wallet/pkg/storage.dart';
 import 'package:stackmate_wallet/app/common/components/style.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'app/landing/pages/landing_page.dart';
+import 'app/landing/landing_page.dart';
 
 void main() async {
   await initializeHive();
@@ -86,10 +87,10 @@ class Stackmate extends StatelessWidget {
         path: '/',
         builder: (_, __) => const LandingPage(),
       ),
-      // GoRoute(
-      //   path: '/home',
-      //   builder: (_, __) => const HomeScreen(),
-      // ),
+      GoRoute(
+        path: '/home',
+        builder: (_, __) => const HomePage(),
+      ),
       // GoRoute(
       //   path: '/settings',
       //   builder: (_, __) => const SettingsScreen(),
